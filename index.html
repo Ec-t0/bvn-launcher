@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVN 3.3 Ultimate Launcher</title>
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.alphacoders.com/161/161042.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background: rgba(15, 15, 15, 0.95);
+            padding: 50px;
+            border-radius: 24px;
+            border: 2px solid #ff4757;
+            box-shadow: 0 0 40px rgba(255, 71, 87, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            color: #ff4757;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: block;
+            margin: 15px auto;
+            padding: 18px 25px;
+            background: #ff4757;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            background: #ff6b81;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
+        }
+        .btn-apk {
+            background: #2ed573;
+        }
+        .btn-apk:hover {
+            background: #7bed9f;
+            box-shadow: 0 10px 20px rgba(46, 213, 115, 0.4);
+        }
+        .warning-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(255, 165, 2, 0.1);
+            border-left: 4px solid #ffa502;
+            text-align: left;
+            border-radius: 4px;
+        }
+        .warning-text {
+            color: #ffa502;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>BVN v3.3</h1>
+        <p>The web version is currently unstable. Use the standalone launcher for the best experience (No lag, all characters unlocked).</p>
+        
+        <!-- This link automatically triggers the download of the file in your repo -->
+        <a href="launch.exe" download class="btn">Download for Windows (EXE)</a>
+        
+        <!-- If you upload an APK later, this will work too -->
+        <a href="bvn33.apk" download class="btn btn-apk">Download for Android (APK)</a>
+
+        <div class="warning-box">
+            <p class="warning-text"><strong>Pro Tip:</strong> After downloading, right-click 'launch.exe' and select "Run as Administrator" if it asks for permissions.</p>
+        </div>
+    </div>
+</body>
+</html>

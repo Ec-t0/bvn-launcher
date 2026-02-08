@@ -3,98 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BVN 3.3 Ultimate Launcher</title>
+    <title>BVN 3.3 Arcade - Ultimate Mirrors</title>
     <style>
+        :root {
+            --primary: #ff4757;
+            --bg: #0a0a0a;
+            --card-bg: #151515;
+            --text: #ffffff;
+        }
+
         body {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.alphacoders.com/161/161042.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            text-align: center;
-            height: 100vh;
             margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            min-height: 100vh;
         }
-        .card {
-            background: rgba(15, 15, 15, 0.95);
-            padding: 50px;
-            border-radius: 24px;
-            border: 2px solid #ff4757;
-            box-shadow: 0 0 40px rgba(255, 71, 87, 0.3);
-            max-width: 500px;
-            width: 90%;
+
+        .header {
+            padding: 20px;
+            text-align: center;
         }
+
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            color: #ff4757;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        p {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .btn {
-            display: block;
-            margin: 15px auto;
-            padding: 18px 25px;
-            background: #ff4757;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn:hover {
-            background: #ff6b81;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
-        }
-        .btn-apk {
-            background: #2ed573;
-        }
-        .btn-apk:hover {
-            background: #7bed9f;
-            box-shadow: 0 10px 20px rgba(46, 213, 115, 0.4);
-        }
-        .warning-box {
-            margin-top: 25px;
-            padding: 15px;
-            background: rgba(255, 165, 2, 0.1);
-            border-left: 4px solid #ffa502;
-            text-align: left;
-            border-radius: 4px;
-        }
-        .warning-text {
-            color: #ffa502;
-            font-size: 0.85rem;
             margin: 0;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .mirror-selector {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .mirror-btn {
+            background: var(--card-bg);
+            color: white;
+            border: 2px solid #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .mirror-btn:hover {
+            border-color: var(--primary);
+            background: #222;
+        }
+
+        .mirror-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        #game-wrapper {
+            width: 95vw;
+            height: 75vh;
+            max-width: 1100px;
+            background: #000;
+            border: 3px solid #333;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .controls-panel {
+            margin-top: 15px;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            gap: 40px;
+            font-size: 0.9rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .p-info b { color: var(--primary); }
+        
+        .status-bar {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>BVN v3.3</h1>
-        <p>The web version is currently unstable. Use the standalone launcher for the best experience (No lag, all characters unlocked).</p>
-        
-        <!-- This link automatically triggers the download of the file in your repo -->
-        <a href="launch.exe" download class="btn">Download for Windows (EXE)</a>
-        
-        <!-- If you upload an APK later, this will work too -->
-        <a href="bvn33.apk" download class="btn btn-apk">Download for Android (APK)</a>
 
-        <div class="warning-box">
-            <p class="warning-text"><strong>Pro Tip:</strong> After downloading, right-click 'launch.exe' and select "Run as Administrator" if it asks for permissions.</p>
+    <div class="header">
+        <h1>Bleach vs Naruto 3.3</h1>
+        <div class="status-bar">Select a mirror if the game doesn't load</div>
+    </div>
+
+    <div class="mirror-selector">
+        <button class="mirror-btn active" onclick="loadMirror(0, this)">Mirror 1 (Primary)</button>
+        <button class="mirror-btn" onclick="loadMirror(1, this)">Mirror 2 (Alternative)</button>
+        <button class="mirror-btn" onclick="loadMirror(2, this)">Mirror 3 (Legacy)</button>
+        <button class="mirror-btn" onclick="loadMirror(3, this)">Mirror 4 (New)</button>
+    </div>
+
+    <div id="game-wrapper">
+        <!-- The Game Iframe -->
+        <iframe id="game-frame" src="https://www.retrogames.cc/embed/41720-bleach-vs-naruto-3-3.html" allowfullscreen="true" scrolling="no"></iframe>
+    </div>
+
+    <div class="controls-panel">
+        <div class="p-info">
+            <b>P1:</b> WASD to move | JUIKLO to attack
+        </div>
+        <div class="p-info">
+            <b>P2:</b> ARROWS to move | 123456 to attack
         </div>
     </div>
+
+    <script>
+        const mirrors = [
+            "https://www.retrogames.cc/embed/41720-bleach-vs-naruto-3-3.html",
+            "https://kbhgames.com/game/bleach-vs-naruto-3-3/embed",
+            "https://pog.com/games/bleach_vs_naruto_3_3/embed",
+            "https://titanscloud.github.io/as3-games/bvn33/"
+        ];
+
+        function loadMirror(index, btn) {
+            // Update Iframe
+            document.getElementById('game-frame').src = mirrors[index];
+            
+            // Update Buttons
+            const buttons = document.querySelectorAll('.mirror-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
 </body>
 </html>
